@@ -1,0 +1,12 @@
+*.log
+node_modules
+bundles
+workspace.xml
+.idea/
+dist/
+!systemjs.config.js
+*.npmrc
+.happypack/
+.history
+.editorconfig
+package-lock.*

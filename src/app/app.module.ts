@@ -8,9 +8,9 @@ import { AuthGuardBpm } from '@alfresco/adf-core';
 
 // App components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ModelerComponent } from './modeler/modeler.component';
+import { XmlUploaderComponent } from './modeler/components/xml-uploader/xml-uploader.component';
 
 const appRoutes: Routes = [
     {
@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
+        XmlUploaderComponent,
         LoginComponent,
         ModelerComponent
     ],

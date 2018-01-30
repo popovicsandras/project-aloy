@@ -7,7 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./modeler.component.css']
 })
 export class ModelerComponent implements OnInit {
+
     ngOnInit() {
 
+    }
+
+    xmlRead(xml: string) {
+        console.log(xml);
     }
 }

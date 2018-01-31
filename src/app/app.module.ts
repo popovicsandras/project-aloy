@@ -9,10 +9,10 @@ import { AuthGuardBpm } from '@alfresco/adf-core';
 // App components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ModelerComponent } from './modeler/modeler.component';
-import { XmlUploaderComponent } from './modeler/components/xml-uploader/xml-uploader.component';
-import { BpmnEditorComponent } from './modeler/components/bpmn-editor/bpmn-editor.component';
-import { BpmnService } from 'app/modeler/services/bpmn.service';
+
+import { MaterialModule } from './material.module';
+import { ModelerComponent } from 'app/modeler/components/modeler/modeler.component';
+import { ModelerModule } from 'app/modeler/modeler.module';
 
 const appRoutes: Routes = [
     {
@@ -39,18 +39,13 @@ const appRoutes: Routes = [
             // { enableTracing: true } // <-- debugging purposes only
         ),
 
-        // ADF modules
+        MaterialModule,
         AdfModule,
+        ModelerModule
     ],
     declarations: [
         AppComponent,
-        XmlUploaderComponent,
-        BpmnEditorComponent,
-        LoginComponent,
-        ModelerComponent
-    ],
-    providers: [
-        BpmnService
+        LoginComponent
     ],
     bootstrap: [AppComponent]
 })

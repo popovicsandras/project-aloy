@@ -8,11 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ModelerComponent implements OnInit {
 
-    ngOnInit() {
+    bpmnXml: string;
 
-    }
+    ngOnInit() {}
 
     xmlRead(xml: string) {
-        console.log(xml);
+        this.bpmnXml = xml;
     }
 }

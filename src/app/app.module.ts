@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ModelerComponent } from './modeler/modeler.component';
 import { XmlUploaderComponent } from './modeler/components/xml-uploader/xml-uploader.component';
+import { BpmnEditorComponent } from './modeler/components/bpmn-editor/bpmn-editor.component';
+import { BpmnService } from 'app/modeler/services/bpmn.service';
 
 const appRoutes: Routes = [
     {
@@ -43,10 +45,13 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         XmlUploaderComponent,
+        BpmnEditorComponent,
         LoginComponent,
         ModelerComponent
     ],
-    providers: [],
+    providers: [
+        BpmnService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

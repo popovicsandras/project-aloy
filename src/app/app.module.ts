@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     {
         path: 'modeler',
         component: ModelerComponent,
-        canActivate: [AuthGuardBpm]
+        canActivate: [ AuthGuardBpm ]
     },
     {
         path: '',
@@ -34,11 +34,7 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(
-            appRoutes // ,
-            // { enableTracing: true } // <-- debugging purposes only
-        ),
-
+        RouterModule.forRoot(appRoutes),
         MaterialModule,
         AdfModule,
         ModelerModule
@@ -47,6 +43,6 @@ const appRoutes: Routes = [
         AppComponent,
         LoginComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

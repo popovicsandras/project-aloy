@@ -1,0 +1,14 @@
+.modeler-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-droparea {
+        flex: 1 0 auto;
+        display: block;
+    }
+
+    &-export {
+        flex: 0 0 auto;
+    }
+}

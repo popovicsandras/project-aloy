@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, Input, ViewChild } from '@angular/core';
 import { BpmnService } from '../../services/bpmn.service';
+import { ModelerService } from 'app/modeler/services/modeler.service';
+const FileSaver = require('file-saver');
 
 @Component({
     selector: 'app-bpmn-editor',
@@ -23,15 +25,27 @@ export class BpmnEditorComponent implements OnInit {
 
     _source: string;
 
-    constructor(private bpmnService: BpmnService) {}
+    constructor(private bpmnService: BpmnService, private modelerService: ModelerService) {
+        bpmnService.importSubject.subscribe({
+            error: (error) => {
+                console.log('error: ', error.message);
+            }
+        });
+        bpmnService.exportSubject.subscribe({
+            next: (xml) => {
+                const blob = new Blob([xml], {type: 'text/xml;charset=utf-8'});
+                FileSaver.saveAs(blob, 'export.xml');
+            },
+            error: (error) => {
+                console.log('error: ', error.message);
+            }
+        });
+
+        modelerService.exportSource$.subscribe(() => bpmnService.export());
+    }
 
     ngOnInit() {
-        this.bpmnService.setup(this.canvas.nativeElement)
-            .subscribe({
-                error: (error) => {
-                    console.log('error: ', error.message);
-                }
-            });
+        this.bpmnService.setup(this.canvas.nativeElement);
         this.loadXml();
     }
 

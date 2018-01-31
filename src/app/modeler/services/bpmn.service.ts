@@ -7,16 +7,18 @@ export class BpmnService {
 
     canvas: any;
     modeler: any;
-    modelerSubject: Subject<any>;
+    importSubject: Subject<any>;
+    exportSubject: Subject<string>;
 
     constructor() {
-        this.modelerSubject = new Subject<any>();
+        this.importSubject = new Subject<any>();
+        this.exportSubject = new Subject<string>();
     }
 
     setup(canvasElement) {
         this.canvas = canvasElement;
         this.render();
-        return this.modelerSubject;
+        return this.importSubject;
     }
 
     render() {
@@ -28,10 +30,20 @@ export class BpmnService {
     loadXml(xml: string) {
         this.modeler.importXML(xml, (err) => {
             if (err) {
-                this.modelerSubject.error(err);
+                this.importSubject.error(err);
             }
 
-            this.modelerSubject.next();
+            this.importSubject.next();
+        });
+    }
+
+    export() {
+        this.modeler.saveXML((err: any, xml: any) => {
+            if (err) {
+                this.exportSubject.error(err);
+            }
+
+            this.exportSubject.next(xml);
         });
     }
 }

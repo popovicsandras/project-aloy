@@ -1,2 +1,10 @@
-<app-xml-uploader (xmlRead)="xmlRead($event)"></app-xml-uploader>
+<div class="modeler-toolbar">
+    <app-xml-uploader
+        class="modeler-toolbar-droparea"
+        (xmlRead)="xmlRead($event)">
+    </app-xml-uploader>
+    <button mat-icon-button class="modeler-toolbar-export" (click)="export()">
+        <mat-icon>save</mat-icon>
+    </button>
+</div>
 <app-bpmn-editor [source]="bpmnXml"></app-bpmn-editor>
